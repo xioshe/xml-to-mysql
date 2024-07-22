@@ -1,0 +1,1 @@
+src/main/resources/item_jd.xml filter=lfs diff=lfs merge=lfs -text
