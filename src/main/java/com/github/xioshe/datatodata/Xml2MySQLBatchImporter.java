@@ -3,6 +3,7 @@ package com.github.xioshe.datatodata;
 
 import com.github.xioshe.datatodata.model.ObjectMapper;
 import com.github.xioshe.datatodata.model.Product;
+import com.github.xioshe.datatodata.utils.MysqlPropertiesConstant;
 import com.github.xioshe.datatodata.utils.Sqls;
 import com.github.xioshe.datatodata.utils.XmlParser;
 import org.dom4j.Document;
@@ -44,7 +45,10 @@ public class Xml2MySQLBatchImporter {
 
         stopWatch.start("insert-into-mysql");
 
-        try (var connection = DriverManager.getConnection("jdbc:mysql://192.168.31.252/pmc?useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true", "root", "123456");) {
+        try (var connection = DriverManager.getConnection(
+                MysqlPropertiesConstant.JDBC_URL,
+                MysqlPropertiesConstant.MYSQL_USERNAME,
+                MysqlPropertiesConstant.MYSQL_PASSWORD)) {
             connection.setAutoCommit(false);
 
             try (var statement = connection.prepareStatement(Sqls.SAVE_SQL)) {
