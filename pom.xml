@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.xioshe</groupId>
-    <artifactId>data-to-data</artifactId>
+    <artifactId>xml-to-mysql</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>data-to-data</name>
     <description>data-to-data</description>
@@ -55,6 +55,12 @@
             <artifactId>commons-text</artifactId>
             <version>1.12.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
