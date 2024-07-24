@@ -48,10 +48,10 @@ public class DisruptorConcurrentBatchImporter {
                 ProducerType.SINGLE,
                 new BusySpinWaitStrategy());
 
-        CountDownLatch shutdownLatch = new CountDownLatch(4);
-        var consumers = new RewindableEventHandler[4];
+        var consumers = new SaveDbHandler[4];
+        CountDownLatch shutdownLatch = new CountDownLatch(consumers.length);
         for (int i = 0; i < consumers.length; i++) {
-            consumers[i] = new SaveDbHandler(i, 4, shutdownLatch);
+            consumers[i] = new SaveDbHandler(i, consumers.length, shutdownLatch);
         }
         disruptor.handleEventsWith(new SimpleBatchRewindStrategy(), consumers)
                 .then(new ClearingEventHandler());

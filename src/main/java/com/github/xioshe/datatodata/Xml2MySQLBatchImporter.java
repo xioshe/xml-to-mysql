@@ -80,6 +80,6 @@ public class Xml2MySQLBatchImporter {
 
     public static void main(String[] args) {
         new Xml2MySQLBatchImporter().importWithJdbcBatch("classpath:items.xml");
-//        new Xml2MySQLBatchImporter().importe("classpath:one.xml");
+//        new Xml2MySQLBatchImporter().importWithJdbcBatch("classpath:one.xml");
     }
 }
